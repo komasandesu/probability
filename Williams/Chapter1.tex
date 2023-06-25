@@ -1,0 +1,1365 @@
+\documentclass{jsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{latexsym}
+\usepackage{ascmac}
+
+\renewcommand{\proofname}{\textbf{\rm 証明}}
+
+
+\title{Williams Chapter 1}
+\author{駒谷亮叡}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\subsubsection*{1.1}
+
+$S$を集合とする
+以下を満たすとき、$S$の部分集合族$\Sigma_0$を$S$の加法族という．
+\begin{enumerate}
+    \item $S\in\Sigma_0$
+    \item $F\in\Sigma_0 \rightarrow S\backslash F\in\Sigma_0$
+    \item $F,G\in\Sigma_0 \rightarrow F\cup G\in\Sigma_0$
+\end{enumerate}
+
+これは有限回の操作で閉じているので有限加法族である．
+
+($\emptyset=S^c\in\Sigma_0$
+，$F,G\in\Sigma_0 \rightarrow F\cap G=(F^c\cup G^c)^c\in\Sigma_0$)
+\\
+
+$\Sigma$が$S$の$\sigma$加法族(完全加法族)であれば
+$F_n\in\Sigma(n\in\mathbf{N})$に対して
+\begin{equation}
+    \bigcup_{n} F_n\in\Sigma \nonumber
+\end{equation}
+であり
+\begin{equation}
+    \bigcap_{n} F_n = \left(\bigcup_{n} F_n^c\right)^c \in\Sigma  \nonumber
+\end{equation}
+もまた成り立つ．
+したがって，$S$の$\sigma$加法族は「任意の可算集合演算の下で安定」となる．
+
+集合$S$とその$\sigma$加法族$\Sigma$のペア$(S,\Sigma)$を可測空間という．
+\\
+
+$\mathcal{C}$を$S$の部分集合族とする．
+このとき，$\mathcal{C}$を含む全ての$\sigma$加法族の交差$\sigma(\mathcal{C})$は$\mathcal{C}$を含む最小の$S$の$\sigma$加法族である．
+
+\begin{itembox}[l]{}
+\begin{equation}
+    \mathcal{F}_{\mathcal{C}}:=\{\mathcal{F}\ |\ \mathcal{C}\subset\mathcal{F},\mathcal{F}は S 上の \sigma 加法族\}\nonumber
+\end{equation}
+\begin{equation}
+    \sigma(\mathcal{C}):=\bigcap_{\mathcal{F}\in\mathcal{F}_{\mathcal{C}}}\mathcal{F} \nonumber
+\end{equation}
+のとき$\sigma(\mathcal{C})$が$\sigma$加法族となることを示せば，$\mathcal{C}$を含む最小の$\sigma$加法族であることがわかる．
+
+\begin{proof}
+
+\begin{description}
+    \item
+    \item[(1)]\mbox{}\\
+    $\forall \mathcal{F}\in\mathcal{F}_{\mathcal{C}}$は$S$の加法族であるから
+    $S\in\mathcal{F}$．\par
+    よって$S\in \bigcap_{\mathcal{F}\in\mathcal{F}_{\mathcal{C}}}\mathcal{F}$．
+    
+    \item[(2)]\mbox{}\\
+    $A\in \sigma(\mathcal{C})$であれば$\forall \mathcal{F}\in\mathcal{F}_{\mathcal{C}}$で$A\in \mathcal{F}$であり，    
+    $\mathcal{F}$は加法族であるので$S\backslash A\in \mathcal{F}$．\par
+    よって$S\backslash A\in \bigcap_{\mathcal{F}\in\mathcal{F}_{\mathcal{C}}}\mathcal{F}$．
+    
+    \item[(3)]\mbox{}\\
+    $A_n\in \sigma(\mathcal{C})\ (n\in\mathbf{N})$であれば$\forall \mathcal{F}\in\mathcal{F}_{\mathcal{C}}$で$A_n\in \mathcal{F}(n\in\mathbf{N})$であり，
+    $\mathcal{F}$は$\sigma$加法族であるので
+    $\bigcup_{n} A_n\in\mathcal{F}$．
+    よって$\bigcup_{n} A_n\in \bigcap_{\mathcal{F}\in\mathcal{F}_{\mathcal{C}}}\mathcal{F}$．
+\end{description}
+
+\end{proof}
+
+\end{itembox}
+
+\begin{itembox}[l]{}
+示すこと:
+\begin{equation}
+    \mathcal{C} \subset \mathcal{D} \Longrightarrow \sigma(\mathcal{C}) \subset \sigma(\mathcal{D}) \nonumber 
+\end{equation}
+\begin{proof}
+    まず$\sigma(\mathcal{D})$が$\mathcal{C}$を含む$\sigma$加法族であることを示す．
+\begin{equation}
+    \mathcal{F}_{\mathcal{D}}:=\{\mathcal{F}\ |\ \mathcal{D}\subset\mathcal{F},\mathcal{F}は S 上の \sigma 加法族\}\nonumber
+\end{equation}
+\begin{equation}
+    \sigma(\mathcal{D}):=\bigcap_{\mathcal{F}\in\mathcal{F}_{\mathcal{D}}}\mathcal{F} \nonumber
+\end{equation}
+であり，$\mathcal{C} \subset \mathcal{D}$より$\forall\mathcal{F}\in\mathcal{F}_{\mathcal{D}}$で$\mathcal{C} \subset \mathcal{F}$であるので $\mathcal{C} \subset \sigma(\mathcal{D})$．
+ここで，$\sigma(\mathcal{C})$は$\mathcal{C}$を含む最小の$\sigma$加法族であったので$\sigma(\mathcal{C})\subset \sigma(\mathcal{D})$．
+\end{proof}
+
+\end{itembox}
+
+
+\subsubsection*{1.2}
+$S$を位相空間とする．
+
+$S$の位相$\mathcal{O}(S)$によって生成される$\sigma$加法族は$S$のボレル集合と呼ばれ，
+\begin{equation}
+    \mathcal{B}(S)=\sigma(\mathcal{O}(S)) \nonumber
+\end{equation}
+とかく．
+
+ここで$\mathcal{B}:=\mathcal{B}(\mathbf{R})$と表すこととする．
+\\
+
+$\sigma$加法族$\mathcal{B}$は、すべての$\sigma$加法族の中で最も重要である。我々が日常的に使う$\mathbf{R}$の部分集合はすべて$\mathcal{B}$の要素であり、実際、$\mathcal{B}$にない$\mathbf{R}$の部分集合を明示的に（選択公理を使わずに）構成するのは難しい．
+
+$\mathcal{B}$の要素は複雑であるが，
+次のような系
+\begin{equation}
+    \pi(\mathbf{R}):=\{(-\infty ,x]:x\in\mathbf{R}\} \nonumber
+\end{equation}
+は非常にわかりやすく，また以下が成り立つ．
+\begin{equation}
+    \mathcal{B}=\sigma(\pi(\mathbf{R}))
+\end{equation}
+
+\begin{proof}
+    $\sigma(\pi(\mathbf{R})) \subset \mathcal{B}$
+
+    各$x\in\mathbf{R}$において$(-\infty,x]=\bigcap_{n\in\mathbf{N}}(-\infty,x+\frac{1}{n})$であるので$x\in\mathcal{O}(\mathbf{R})$
+
+\begin{itembox}[l]{}
+    $(-\infty,x]=\bigcap_{n\in\mathbf{N}}(-\infty,x+\frac{1}{n})$を示す．
+    \begin{proof}
+    \begin{description}
+        \item[($\subset$)]\mbox{}\\
+            $\forall n\in\mathbf{N}$で$(-\infty,x]\subset(-\infty,x+\frac{1}{n})$であるので$(-\infty,x]\subset \bigcap_{n\in\mathbf{N}}(-\infty,x+\frac{1}{n})$
+        \item[($\supset$)]\mbox{}\\
+            $\left(\mathbf{R}\backslash(-\infty,x]\right) \subset \left(\mathbf{R}\backslash\bigcap_{n\in\mathbf{N}}(-\infty,x+\frac{1}{n})\right)$，つまり
+            \begin{equation}
+                \forall a\in\mathbf{R}\backslash(-\infty,x] で a\notin\bigcap_{n\in\mathbf{N}}(-\infty,x+\frac{1}{n}) \nonumber
+            \end{equation}
+            を示せばよい．\par
+            $\forall a\in\mathbf{R}\backslash(-\infty,x]$より$a>x$であり，アルキメデスの公理より$n\in\mathbf{N},n(a-x)>1$となる$n$が存在する．
+            よって
+            \begin{equation}
+                a>x+\frac{1}{n} \nonumber 
+            \end{equation}
+            となり，$a\notin\bigcap_{n\in\mathbf{N}}(-\infty,x+\frac{1}{n})$であることがわかる．
+    \end{description}
+    \end{proof}
+\end{itembox}
+    
+    したがって，
+    \begin{align}
+        &\pi(\mathbf{R}) \subset \mathcal{O}(\mathbf{R}) \nonumber \\
+        &\Rightarrow \sigma(\pi(\mathbf{R})) \subset \sigma(\mathcal{O}(\mathbf{R}))=\mathcal{B} 
+    \end{align}
+    
+    $\sigma(\pi(\mathbf{R})) \supset \mathcal{B}$
+    
+    ボレル集合$\mathcal{B}$は$\mathbf{R}$の開集合から生成されるので
+    $(a,b) \in \sigma(\pi(\mathbf{R}))\ (a<b)$を示せばよい．
+
+    任意の$u>a$で
+    \begin{equation}
+        (a,u]=(-\infty,u]\cap(-\infty,a]^c \in \sigma(\pi(\mathbf{R})) \nonumber
+    \end{equation}
+    であり，したがって$\epsilon=\frac{1}{2}(b-a)$とすれば
+    \begin{equation}
+        (a,b)=\bigcup_n \left( a,b-\frac{\epsilon}{n} \right] \in \sigma(\pi(\mathbf{R})) \nonumber
+    \end{equation}
+    以上より$\sigma(\pi(\mathbf{R})) \supset \mathcal{B}$．
+
+\end{proof}
+
+\begin{itembox}[l]{}
+$(a,b)=\bigcup_n \left( a,b-\frac{\epsilon}{n} \right]$を示す．
+    \begin{proof}
+    \begin{description}
+        \item[($\supset$)]\mbox{}\\
+            $\forall n\in\mathbf{N}$で
+            $\forall x\in\left( a,b-\frac{\epsilon}{n} \right]$は$a<x\leq b-\frac{\epsilon}{n}$より$a<x<b$であり，$x\in(a,b)$．
+        \item[($\subset$)]\mbox{}\\
+            $\forall x\in(a,b)$で$(a<)x<b$より$b-x>0,\epsilon>0$である．
+            ここでアルキメデスの公理より$n(b-x)\geq\epsilon$となるような $n\in\mathbf{N}$が存在するので
+            \begin{align}
+               &n\geq\frac{\epsilon}{b-x} \nonumber \\
+               &b-x\geq\frac{\epsilon}{n} \nonumber \\
+               &b-\frac{\epsilon}{n} \geq x \nonumber \\
+            \end{align}
+            よって
+            \begin{equation}
+                a< x \leq b-\frac{\epsilon}{n} \nonumber 
+            \end{equation}
+            となり，$x\in\bigcup_n \left( a,b-\frac{\epsilon}{n} \right]$であることがわかる．
+    \end{description}
+    \end{proof}
+\end{itembox}
+
+
+\subsubsection*{1.3}
+集合関数に関する定義
+$S,\Sigma_0$を集合とその加法族とする．
+以下のような関数$\mu_0$について考える．
+\begin{equation}
+    \mu_0:\Sigma_0\to[0,\infty] \nonumber
+\end{equation}
+
+\begin{itemize}
+    \item 有限加法性 \par
+        $\mu_0$が$\mu_0(\emptyset)=0$であり，$F,G\in\Sigma_0$に対して
+        \begin{equation}
+            F\cap G = \emptyset \Rightarrow \mu_0(F\cup G)=\mu_0(F)+\mu_0(G) \nonumber
+        \end{equation}
+        を満たすとき，$\mu_0$を有限加法的であるという．
+    \item 完全加法性 \par
+        $\mu_0$が$\mu_0(\emptyset)=0$であり，
+        $\Sigma_0$の互いに素な集合の列$F_n:n\in\mathbf{N}$に対し，$F=\bigcup F_n$とする．
+    
+        \begin{equation}
+            \mu_0(F)=\sum_n \mu_0(F_n) \nonumber
+        \end{equation}
+        を満たすとき，$\mu_0$を完全加法的であるという．
+\end{itemize}
+
+(任意の完全加法的な関数は，有限加法的である．)
+
+\begin{itembox}[l]{}
+$F\cap G = \emptyset(F,G\in\Sigma_0)$とする．
+
+このとき$F_1=F,F_2=G,F_n=\emptyset(n\geq 3)$とすれば
+$F\cup G\in\Sigma_0$で，$F_n$は互いに素であり
+    \begin{equation}
+        \mu_0(F\cup G)=\mu_0(\bigcup_n F_n)=\sum_n\mu_0(F_n)=\mu_0(F)+\mu_0(G) \nonumber
+    \end{equation}
+\end{itembox}
+
+
+\subsubsection*{1.4}
+測度空間の定義
+
+$(S,\Sigma)$を可測空間とする($\Sigma$は$S$の完全加法族である)．
+
+関数$\mu:\Sigma\to[0,\infty]$が完全加法的であるとき$(S,\Sigma)$の測度といい，$(S,\Sigma,\mu)$を測度空間という．
+
+\subsubsection*{1.5}
+測度に関する定義
+
+$(S,\Sigma,\mu)$を測度空間とする.
+\begin{itemize}
+    \item 有限測度 \par
+        $\mu(S)<\infty$であれば$\mu$は有限測度である．
+    \item $\sigma$有限測度 \par
+        $\Sigma$の集合列$({S_n}:n\in\mathbf{N})$に対して
+        \begin{equation}
+            \mu(S_n)<\infty(\forall n\in\mathbf{N})かつ\bigcup S_n=S \nonumber
+        \end{equation}
+        を満たすとき$\mu$は$\sigma$有限測度である．
+\end{itemize}
+
+\begin{description}
+   \item[\rm 確率空間]\mbox{}\\
+   $\mu(S)=1$であるとき，$\mu$を確率測度といい，$(S,\Sigma,\mu)$を確率空間という．
+   \item[\rm $\mu$零集合]\mbox{}\\
+   $F\in\Sigma$が$\mu(F)=0$であるとき，$F$を$\mu$零集合という．
+
+    各$s\in S$に対して定められた状態$\mathcal{S}$が
+    \begin{equation}
+        F:=\{ s:\mathcal{S}(s)は偽 \} \in\Sigma\ かつ\ \mu(F)=0 \nonumber
+    \end{equation}
+    を満たすとき，$s$はほとんど至るところ成立するという．
+\end{description}
+
+
+\subsubsection*{1.6}
+補題 $\pi{\rm \text{-}system}$の拡張の一意性
+
+$\sigma$加法族は「難しい」が$\pi{\rm \text{-}system}$は「易しい」ので，後者で考えたい．
+
+\begin{description}
+   \item[(a)]\mbox{}\\
+        $S$を集合とする．
+        $\mathcal{I}$が$S$の
+        有限交差の下で安定な$S$の部分集合の族$\pi{\rm\text{-}system}$とすると，
+        \begin{equation}
+            I_1,I_2\in\mathcal{I} \rightarrow I_1\cap I_2\in\mathcal{I} ． \nonumber
+        \end{equation}
+        
+        $\Sigma:=\sigma(\mathcal{I})$とする．
+        $\mu_1,\mu_2$が$(S,\Sigma)$上の測度であり，$\mu_1(S)=\mu_2(S)<\infty$かつ$\mathcal{I}上で\mu_1=\mu_2$を満たせば
+        \begin{equation}
+            \Sigma 上で \mu_1=\mu_2 \nonumber
+        \end{equation}
+        が成り立つ．
+    \item[(b)]\mbox{}\\
+        2つの確率測度が$\pi{\rm\text{-}system}$で等しい場合，それらはその$\pi{\rm\text{-}system}$によって生成される$\sigma$加法族で等しい．
+        
+        ($\mathcal{B}=\sigma(\pi(\mathbf{R}))$は$\Sigma=\sigma(\mathcal{I})$の最も重要な例である．)
+\end{description}
+証明はA1.2-1.4
+
+\subsubsection*{1.7}
+カラテオドリの拡張定理
+
+$S$を集合，$\Sigma_0$をその加法族とし，
+\begin{equation}
+    \Sigma\coloneqq\sigma(\Sigma_0) \nonumber
+\end{equation}
+とする．
+$\mu_0:\Sigma_0\to[0,\infty]$が完全加法的であるとき以下のような$(S,\Sigma)$の測度$\mu$が存在する．
+\begin{equation}
+    \Sigma_0 上で \mu=\mu_0 ． \nonumber
+\end{equation}
+また，$\mu_0(S)<\infty$であれば，補題1.6より
+$\mu_0$の拡張$\mu$は一意である(加法族は$\pi{\rm \text{-}system}$であるため)．
+
+証明A1.5-1.8
+
+\subsubsection*{1.8}
+$\left( (0,1] , \mathcal{B}(0,1] \right)$上のルベーグ測度
+
+$S=(0,1]$とする．
+$F\subseteq S$が
+$r\in\mathbf{N},0\leq a_1\leq b_1\leq\dots\leq a_r\leq b_r\leq 1$で
+\begin{equation}
+    F=(a_1,b_1]\cup\dots\cup(a_r,b_r]
+\end{equation}
+である(有限結合である)場合，$F\in\Sigma_0$．
+このとき$\Sigma_0$は$(0,1]$の加法族であり，
+\begin{equation}
+    \Sigma:=\sigma(\Sigma_0)=\mathcal{B}(0,1] \nonumber
+\end{equation}
+(3)の$F$について，$\mu_0$を以下のように定義する
+\begin{equation}
+    \mu_0(F)\coloneqq\sum_{k\leq r}(b_k-a_k) \nonumber
+\end{equation}
+である．
+$\mu_0$は明らかに有限加法的であり，さらに完全加法的である．(A1.9.参照)
+
+したがって，カラテオドリの拡張定理(1.7.)より，$\mu_0$の拡張である
+$\left( (0,1],\mathcal{B}(0,1] \right]$の測度$\mu$が一意に存在する．
+この測度を$\left( (0,1],\mathcal{B}(0,1] \right]$上のルベーグ測度という．($\mu$はよくLebで表す．)
+
+また，$\left( [0,1],\mathcal{B}[0,1] \right]$上のルベーグ測度は$\{0\}$が測度0となるようにすれば求められる．
+
+このルベーグ測度は長さの概念を正確に表現しているものである．
+
+同様に，$\mathbf{R} ((\mathbf{R}, \mathcal{B}(\mathbf{R})))$上に($\sigma$有限)ルベーグ測度を構成できる．
+
+\subsubsection*{1.9}
+初等不等式
+
+\begin{itembox}[l]{測度の単調性}
+    $A,B\in \Sigma$において$A\subset B\Rightarrow\mu(A)\leq\mu(B)$
+    \begin{proof}
+        \begin{equation}
+            \mu(B)=\mu(A)+\mu(B\backslash A)
+        \end{equation}
+        であり，測度の定義より$\mu(B\backslash A)\geq 0$であることからわかる．
+    \end{proof}
+\end{itembox}
+
+$(S,\Sigma,\mu)$を測度空間とすると
+\begin{description}
+    \item[(a)]\mbox{}\\
+        $\mu(A\cup B)\leq\mu(A)+\mu(B) \ (A,B\in\Sigma)$
+        \\
+        
+        \begin{proof}
+            $(A\cup B)=A\cup (B\backslash A)$であり，$A,(B\backslash A)$は互いに素であるので
+            
+            $\mu(A\cup B)=\mu(A\cup (B\backslash A))=\mu(A)+(B\backslash A)$．
+            
+            ここで$(B\backslash A)\subset B$より$\mu(B\backslash A)\leq\mu(B)$であるので
+            $\mu(A\cup B)=\mu(A)+(B\backslash A)\leq\mu(A)+\mu(B)$．
+        \end{proof}
+        
+    \item[(b)]\mbox{}\\
+        $\mu(\bigcup_{i\leq n}F_i)\leq \sum_{i\leq n}\mu(F_i) \ (F_1,F_2,\dots,F_n\in\Sigma)$
+
+        ($\mu(\bigcup_{n\in\mathbf{N}}F_n)\leq \sum_{n\in\mathbf{N}}\mu(F_n) \ (F_n\in\Sigma)$もなりたつ．)
+        \\
+        
+        \begin{proof}
+            $n=1$の場合は(a)より成り立つ．
+            
+            \begin{equation}
+                \mu (\bigcup_{i\leq n}F_i) \leq \sum_{i\leq n}\mu(F_i) \nonumber
+            \end{equation}が成り立つとして$n+1$の場合を考える．
+            
+            両辺に$\mu(F_{n+1})$を加えて
+            \begin{equation}
+                \mu(\bigcup_{i\leq n}F_i)+\mu(F_{n+1}) \leq \sum_{i\leq n}\mu(F_i)+\mu(F_{n+1})= \sum_{i\leq n+1}\mu(F_i) \nonumber
+            \end{equation}
+            (a)より$\mu(\bigcup_{i\leq n+1}F_i) = \mu(\bigcup_{i\leq n}F_i \cup F_{n+1}) \leq \mu(\bigcup_{i\leq n}F_i)+\mu(F_{n+1})$であるので
+            \begin{equation}
+                \mu(\bigcup_{i\leq n+1}F_i) \leq \sum_{i\leq n+1}\mu(F_i) \nonumber
+            \end{equation}
+        \end{proof}
+        
+\end{description}
+また，$\mu(S)<\infty$であれば
+\begin{description}
+    \item[(c)]\mbox{}\\
+        $\mu(A\cup B) = \mu(A)+\mu(B)-\mu(A\cap B) \ (A,B\in\Sigma)$
+        \\
+       
+        \begin{proof}
+            $A\cup B=A\cup(B\backslash (A\cap B))$であり，$A,B\backslash (A\cap B)$は互いに素であるので
+            \begin{equation}
+                \mu(A\cup B) = \mu(A\cup (B\backslash (A\cap B))) = \mu(A)+\mu(B\backslash (A\cap B)) \nonumber
+            \end{equation}
+            ここで，$B=(A\cap B)\cup(B\backslash (A\cap B))$であり，$(A\cap B),(B\backslash (A\cap B))$は互いに素であるので
+            \begin{equation}
+                \mu(B)=\mu(A\cap B)+\mu(B\backslash (A\cap B)) ．\nonumber
+            \end{equation}
+            $\mu(S)<\infty,(A\cap B) \subset S$から$\mu(A\cap B)<\infty$であるので
+            
+            $\mu(B\backslash (A\cap B))=\mu(B)-\mu(A\cap B)$が成り立ち，
+            \begin{equation}
+                \mu(A\cup B) = \mu(A)+\mu(B\backslash (A\cap B)) = \mu(A)+\mu(B)-\mu(A\cap B) \nonumber
+            \end{equation}
+        \end{proof}
+   
+    \item[(d)] (包除原理)
+        $F_1,F_2,\dots,F_n\in\Sigma$に対して
+        \begin{equation}
+        \begin{split}
+            \mu(\bigcup_{i\leq n}F_i) = &\sum_{i\leq n}\mu(F_i) -  \sum\sum_{i<j\leq n}\mu(F_i\cap F_j) + \sum\sum\sum_{i<j<k\leq n}\mu(F_i\cap F_j\cap F_k) - \cdots
+            \\ &+ (-1)^{n-1}\mu(F_1\cap F_2\cap\dots\cap F_n) \nonumber
+        \end{split}
+        \end{equation}
+        \\
+        
+        \begin{proof}
+            $n=2$の場合は(c)より成り立つ．
+            \begin{equation}
+                \begin{split}
+                    \mu(\bigcup_{i\leq n}F_i) = &\sum_{i\leq n}\mu(F_i) -  \sum\sum_{i<j\leq n}\mu(F_i\cap F_j) + \sum\sum\sum_{i<j<k\leq n}\mu(F_i\cap F_j\cap F_k) - \cdots
+                    \\ &+ (-1)^{n-1}\mu(F_1\cap F_2\cap\dots\cap F_n) \nonumber
+                \end{split}
+            \end{equation}
+            が成り立つとして，$n+1$のときを考える．
+            (c)より
+            \begin{equation}
+                \mu(\bigcup_{i\leq n+1}F_i)=\mu(\bigcup_{i\leq n}F_i\cup F_{n+1})=\mu(\bigcup_{i\leq n}F_i)+\mu(F_{n+1})-\mu(\bigcup_{i\leq n}F_i\cap F_{n+1}) \nonumber
+            \end{equation}
+            ここで，仮定より
+            \begin{align}
+                \begin{split}
+                    &\mu(\bigcup_{i\leq n}F_i\cap F_{n+1})=\mu(\bigcup_{i\leq n}(F_i\cap F_{n+1})) \\ \nonumber
+                    = &\sum_{i\leq n}\mu(F_i\cap F_{n+1}) -  \sum\sum_{i<j\leq n}\mu((F_i\cap F_{n+1})\cap (F_j\cap F_{n+1})) + \cdots
+                    \\ &+ (-1)^{n-1}\mu((F_1\cap F_{n+1})\cap (F_2\cap F_{n+1})\cap\dots\cap (F_n\cap F_{n+1})) \\ \nonumber
+                    = &\sum_{i\leq n}\mu(F_i\cap F_{n+1}) -  \sum\sum_{i<j\leq n}\mu(F_i\cap F_j\cap F_{n+1}) + \cdots \\ &+ (-1)^{n-1}\mu(F_1\cap F_2\cap\dots\cap F_n\cap F_{n+1}) \nonumber
+                \end{split}
+            \end{align}
+            よって
+            \begin{align}
+                \begin{split}
+                    &\mu(\bigcup_{i\leq n}F_i)+\mu(F_{n+1})-\mu(\bigcup_{i\leq n}F_i\cap F_{n+1}) \\ \nonumber
+                    = & \Bigl( \sum_{i\leq n}\mu(F_i) -  \sum\sum_{i<j\leq n}\mu(F_i\cap F_j) + \sum\sum\sum_{i<j<k\leq n}\mu(F_i\cap F_j\cap F_k) - \cdots 
+                    \\ & + (-1)^{n-1}\mu(F_1\cap F_2\cap\dots\cap F_n) \Bigr) +\mu(F_{n+1}) \\ \nonumber
+                    -  &\Bigl( \sum_{i\leq n}\mu(F_i\cap F_{n+1}) -  \sum\sum_{i<j\leq n}\mu(F_i\cap F_j\cap F_{n+1}) + \cdots \\ &+ (-1)^{n-1}\mu(F_1\cap F_2\cap\dots\cap F_n\cap F_{n+1}) \Bigr) \\ \nonumber
+                    = &\sum_{i\leq n+1}\mu(F_i) -  \sum\sum_{i<j\leq n+1}\mu(F_i\cap F_j) + \sum\sum\sum_{i<j<k\leq n+1}\mu(F_i\cap F_j\cap F_k) - \cdots
+                    \\ &+ (-1)^{n}\mu(F_1\cap F_2\cap\dots\cap F_n\cap F_{n+1}) \nonumber
+                \end{split}
+            \end{align}
+            となり，
+            \begin{equation}
+                \begin{split}
+                    \mu(\bigcup_{i\leq n+1}F_i)  = &\sum_{i\leq n+1}\mu(F_i) -  \sum\sum_{i<j\leq n+1}\mu(F_i\cap F_j) + \sum\sum\sum_{i<j<k\leq n+1}\mu(F_i\cap F_j\cap F_k) - \cdots
+                    \\ &+ (-1)^{n}\mu(F_1\cap F_2\cap\dots\cap F_n\cap F_{n+1}) \nonumber
+                \end{split}
+            \end{equation}
+            が成り立つことが示された．
+        \end{proof}
+        
+\end{description}
+
+$A\cup B$は$A\cup (B\backslash(A\cap B))$の互いに素な結合なので(c)は明らかである．
+(d)は(c)によって帰納的に導かれるが，正確な証明は積分による．
+
+
+\subsubsection*{1.10}
+測度の単調収束性
+
+$(S,\Sigma,\mu)$を測度空間とする
+
+\begin{description}
+    \item[(a)] $F_n\in\Sigma(n\in\mathbf{N})$について，$F_n\uparrow F$であれば$\mu(F_n)\uparrow \mu(F)$ \par
+    $F_n\uparrow F\colon$ $F_n\subseteq F_{n+1}(\forall n\in\mathbf{N}),\bigcup_n F_n=F$
+    
+    (a) は測度の基本的な性質である．
+        
+        \begin{proof}
+            $G_1\coloneqq F_1,G_n\coloneqq F_n\backslash F_{n-1}(n\geq 2)$とすると$G_n(n\in\mathbf{N})$は互いに素であるので
+            \begin{equation}
+                \mu(F)=\mu(\bigcup_n F_n)=\mu(\bigcup_n G_n)=\sum_n\mu(G_n)=\lim_{n\to\infty}\sum_{k=1}^{n} \mu(G_k) = \lim_{n\to\infty} \mu(\bigcup_{k=1}^{n} G_k) = \lim_{n\to\infty} \mu(F_n) \nonumber
+            \end{equation}
+            よって$\mu(F)=\lim_{n\to\infty} \mu(F_n)$．
+            測度の単調性より$\mu(F_n)\leq\mu(F_{n+1})$となり$\mu(F_n)$は単調増加である．
+            以上より$\mu(F_n)\uparrow \mu(F)$．
+        \end{proof}
+        
+    \item[(b)] $G_n\in\Sigma(n\in\mathbf{N})$について$G_n\downarrow G$かつ，$\mu(G_k)<\infty$となるような$k$が存在すれば$\mu(G_n)\downarrow \mu(G)$
+
+        \begin{proof}
+            $n\in\mathbf{N}$について$F_n=G_k\backslash G_{k+n}$とすると，$F_n\uparrow (G_k\backslash G)$より
+            \begin{equation}
+                \lim_{n\to\infty}\mu(F_n)=\mu(G_k\backslash G) \nonumber
+            \end{equation}である．
+            ここで$G_k\supset G_{k+n},\mu(G_{k+n})<\infty$であるので
+            \begin{align}
+                &\lim_{n\to\infty} \mu(F_n)=\lim_{n\to\infty}\mu(G_k\backslash G_{k+n}) \nonumber \\
+                =&\lim_{n\to\infty} \left( \mu(G_k)-\mu(G_{k+n}) \right) =\mu(G_k) - \lim_{n\to\infty}\mu(G_{k+n}) \nonumber
+            \end{align}
+            また，$G_k\supset G,\mu(G)<\infty$であるので$\mu(G_k\backslash G)=\mu(G_k)-\mu(G)$．
+            
+            $\mu(G_k)<\infty$より両辺から$\mu(G_k)$を引いて$\lim_{n\to\infty}\mu(G_{n}) \left( =\lim_{n\to\infty}\mu(G_{k+n}) \right) =\mu(G)$
+        \end{proof}   
+    
+    \item[(c)] 可算個の$\mu$零集合の和集合は$\mu$零集合である．
+        \begin{proof}
+            $A_1,A_2,\dots\in\Sigma$が$\mu$零集合であるならば，$\bigcup_{n=1}^{\infty}An$も$\mu$零集合である．
+            つまり，
+            \begin{equation}
+                \mu(A_1)=\mu(A_2)=\dots=0 \Rightarrow \mu(\bigcup_{n=1}^{\infty}A_n)=0   \nonumber 
+            \end{equation}
+            を示せばよい．
+            ここで，(1.9,b)より，$\mu(A_1)=\mu(A_2)=\dots=0$であれば
+            \begin{equation}
+                \mu(\bigcup_{n=1}^{\infty}A_n) \leq \sum_{n=1}^{\infty}\mu(A_n)=0   \nonumber 
+            \end{equation}
+            から$\mu(\bigcup_{n=1}^{\infty}A_n)=0$が成り立つ．
+        \end{proof}
+    
+\end{description}
+
+
+
+\subsubsection*{A1.2}
+$d{\rm \text{-}system}$
+
+$S$を集合とし，$\mathcal{D}$をその部分集合族とする．
+$\mathcal{D}$は以下を満たすとき$d{\rm \text{-}system}$という．
+\begin{description}
+    \item[(a)] $S\in\mathcal{D}$
+    \item[(b)] $A,B\in\mathcal{D} , A\subseteq B \Longrightarrow B\backslash A\in\mathcal{D}$
+    \item[(c)] $A_n\in\mathcal{D}(n\in\mathbf{N}) , A_n\uparrow A \Longrightarrow A\in\mathcal{D}$
+    \item[(d)] 命題．$S$の部分集合族$\Sigma$について，
+        $\Sigma$が$\sigma$加法族 $\Longleftrightarrow$ $\Sigma$が$\pi{\rm \text{-}system}$かつ$d{\rm \text{-}system}$
+\end{description}
+
+\begin{proof}
+    \begin{description}
+        \item[$(\Rightarrow)$]\mbox{}\\
+            $\Sigma$が$\sigma$加法族とする．
+            \begin{enumerate}
+                \item
+                    $\Sigma$は$\sigma$加法族であるので$S\in \Sigma$である．
+                \item
+                    $A,B\in\Sigma$について，
+                    $B\backslash A=(S\backslash A)\cap B$であり，$\Sigma$は$\sigma$加法族であるので$(S\backslash A),B\in\Sigma$であり，$(S\backslash A)\cap B\in\Sigma$
+                \item
+                    $A_n\in\Sigma(n\in\mathbf{N}),A_n\uparrow A$について，
+                    $\Sigma$は$\sigma$加法族であるので$(A=)\bigcup_n A_n\in\Sigma$である．
+            \end{enumerate}
+            以上より$\sigma$加法族$\Sigma$は$d{\rm \text{-}system}$である．
+            
+            また，$\sigma$加法族であれば$A,B\in\Sigma \Rightarrow A\cap B\in\Sigma$も成り立つので，$\Sigma$は$\pi{\rm \text{-}system}$である．
+        \item[$(\Leftarrow)$]\mbox{}\\
+            $\Sigma$が$\pi{\rm \text{-}system}$かつ$d{\rm \text{-}system}$とする．
+            \begin{enumerate}
+                \item
+                    $\Sigma$は$d{\rm \text{-}system}$であるので$S\in \Sigma$である．
+                \item
+                    $F\in\Sigma$について，$F\subseteq S$であり，1より$S\in\Sigma$．
+                    したがって，$\Sigma$は$d{\rm \text{-}system}$であるので$S\backslash F\in\Sigma$．
+                \item
+                    $\Sigma$は$\pi{\rm \text{-}system}$かつ$d{\rm \text{-}system}$であるので
+                    $E\cup F=S\backslash(E^c\cap F^c)\in\Sigma$．
+                
+                    よって，$F_n\in\Sigma(n\in\mathbf{N})$について，
+                    $G_n=\bigcup_{m=1}^n F_m$とすると$G_n\in\Sigma$．
+                    
+                    $\Sigma$は$d{\rm \text{-}system}$であるので$G_n\uparrow\bigcup_n F_n\in\Sigma$である． 
+            \end{enumerate}
+    \end{description}
+\end{proof}
+
+$d(\mathcal{C})$の定義:
+$\mathcal{C}$を$S$の部分集合族とし，$d(\mathcal{C})$を$\mathcal{C}$を含む全ての$d{\rm \text{-}system}$の交差とすると，$d(\mathcal{C})$は$\mathcal{C}$を含む最小の$d{\rm \text{-}system}$である．
+また，次が成り立つ．
+\begin{equation}
+    d(\mathcal{C})\subset \sigma(\mathcal{C}) \nonumber
+\end{equation}
+
+\begin{itembox}[]{}
+    \begin{proof}
+        A.1.2.(d)より$\sigma$加法族であれば$d{\rm \text{-}system}$であるので，$\sigma(\mathcal{C})$は$\mathcal{C}$を含む$d{\rm \text{-}system}$であると言える．ここで，$d(\mathcal{C})$は$\mathcal{C}$を含む最小の$d{\rm \text{-}system}$であったので$d(\mathcal{C})\subset \sigma(\mathcal{C})$．
+    \end{proof}
+\end{itembox}
+
+\subsubsection*{A1.3}
+Dynkin's lemma
+
+$\mathcal{I}$が$\pi{\rm \text{-}system}$であれば
+\begin{equation}
+    d(\mathcal{I})=\sigma(\mathcal{I})
+\end{equation}
+
+したがって，$\pi{\rm \text{-}system}$を含む任意の$d{\rm \text{-}system}$には，その$\pi{\rm \text{-}system}$によって生成された $\sigma$加法族が含まれる．
+
+\begin{itembox}[]{}
+    A.1.2.(d)より$d(\mathcal{I})\subset \sigma(\mathcal{I})$が$\pi{\rm \text{-}system}$であることを示せば，$d(\mathcal{I})$は$\pi{\rm \text{-}system}$かつ$d{\rm \text{-}system}$となり$\mathcal{I}$を含む$\sigma$加法族であり，
+        $\sigma(\mathcal{I})$の最小性から
+        \begin{equation}
+            d(\mathcal{I})\supset\sigma(\mathcal{I}) \nonumber
+        \end{equation}
+        がいえ，$d(\mathcal{I})=\sigma(\mathcal{I})$が示せる．
+\end{itembox}
+
+\begin{proof} \mbox{}\\
+Step 1:
+    \begin{equation}
+        \mathcal{D}_1\coloneqq \{B\in d(\mathcal{I}):B\cap C\in d(\mathcal{I}),\forall C\in\mathcal{I}\} \nonumber    
+    \end{equation}
+    とする．
+    
+    $\forall B \in \mathcal{I}$は$\forall C \in \mathcal{I},(B\cap C)\in \mathcal{I}$を満たすようなものであり，
+    $\mathcal{I} \subset d(\mathcal{I})$から$(B\cap C)\in d(\mathcal{I})$もまた成り立つ．
+    ここで$\mathcal{I} \subset d(\mathcal{I})$より$B \in d(\mathcal{I})$であることから$B\in\mathcal{D}_1$がいえる．
+    よって
+    \begin{equation}
+        \mathcal{I}\subset\mathcal{D}_1． \nonumber
+    \end{equation}
+    
+    \begin{enumerate}
+        \item $S\in d(\mathcal{I})$であり，$\forall C\in\mathcal{I}$に対して$S\cap C=C\in\mathcal{I}$より$S\in\mathcal{D}_1$．
+        \item $B_1,B_2\in\mathcal{D}_1(B_1\subset B_2)$を考える．\par
+            $\forall C\in\mathcal{I}$に対して
+            \begin{equation}
+                (B_1\backslash B_2)\cap C=(B_1\cap C)\backslash (B_2\cap C) \nonumber
+            \end{equation}
+            である．\par
+            $(B_1\cap C),(B_2\cap C)\in d(\mathcal{I})$であり，$d(\mathcal{I})$は$d{\rm \text{-}system}$であるので$\left((B_1\backslash B_2)\cap C\right)\in d(\mathcal{I})$となる．\par
+            よって$B_1\backslash B_2\in\mathcal{D}_1$．
+            \begin{itembox}[]{}
+                \begin{align}
+                    a\in (B_1\cap C)\backslash (B_2\cap C) &\Leftrightarrow a\in (B_1\cap C) かつ a\notin (B_2\cap C) \nonumber \\ 
+                    &\Leftrightarrow (a\in B_1 かつ a\in C) かつ (a\notin B_2 または a\notin C) \nonumber \\
+                    &\Leftrightarrow a\in B_1 かつ a\in C かつ a\notin B_2 \nonumber \\
+                    &\Leftrightarrow a\in(B_1\backslash B_2) かつ a\in C \nonumber \\
+                    &\Leftrightarrow a\in(B_1\backslash B_2) \cap a\in C \nonumber
+                \end{align}
+            \end{itembox}
+        \item \begin{equation}
+                B_n\in\mathcal{D}_1(n\in\mathbf{N})，B_n\uparrow B \left(B_n\subset B_{n+1}(n\in\mathbf{N}) かつ \bigcup_{n=1}^{\infty}B_n=B\right) \nonumber
+            \end{equation}
+            について考える．\par
+            $F_n=B_n\cap C$とおくと，$F_n=B_n\cap C\in d(\mathcal{I})$である．\par
+            また，$F_n=(B_n\cap C)\subset (B_{n+1}\cap C)=F_{n+1} (n\in\mathbf{N})$，\par
+            $\bigcup_{n=1}^{\infty}F_n=\bigcup_{n=1}^{\infty}(B_n\cap C)=\left(\bigcup_{n=1}^{\infty}B_n\right)\cap C=B\cap C$より$F_n\uparrow B\cap C$であり，\par
+            $B_n\in\mathcal{D}_1$から$F_n=B_n\cap C\in d(\mathcal{I}) (n\in\mathbf{N})$であったので$B\cap C\in d(\mathcal{I})$が成り立つ．
+            よって$B\in \mathcal{D}_1$．
+    \end{enumerate}
+    以上より$\mathcal{D}_1$は$\mathcal{I}$を含む$d{\rm \text{-}system}$であることがいえ，$\mathcal{D}_1\supset d(\mathcal{I})$がわかり，逆も成り立つので$\mathcal{D}_1=d(\mathcal{I})$である．
+    
+Step 2:
+    \begin{equation}
+        \mathcal{D}_2\coloneqq \{A\in d(\mathcal{I}):A\cap B\in d(\mathcal{I}),\forall B\in d(\mathcal{I})\} \nonumber    
+    \end{equation}
+    とする．(Step1のようにして$\mathcal{D}_2=d(\mathcal{I})$を示せる．)
+    
+    $\mathcal{D}_1=d(\mathcal{I})$であるので$\forall A \in \mathcal{I}$に対して$\forall B \in d(\mathcal{I}),(A\cap B)\in d(\mathcal{I})$が成り立つ．
+    ここで$A \in d(\mathcal{I})$であることから$A\in\mathcal{D}_2$がいえる．
+    よって
+    \begin{equation}
+        \mathcal{I}\subset\mathcal{D}_2． \nonumber
+    \end{equation}
+
+    \begin{enumerate}
+        \item $S\in d(\mathcal{I})$であり，$\forall C\in d(\mathcal{I})$に対して$S\cap C=C\in d(\mathcal{I})$より$S\in\mathcal{D}_2$．
+        \item $A_1,A_2\in\mathcal{D}_2(A_1\subset A_2)$を考える．\par
+            $\forall B\in d(\mathcal{I})$に対して
+            \begin{equation}
+                (A_1\backslash A_2)\cap B=(A_1\cap B)\backslash (A_2\cap B) \nonumber
+            \end{equation}
+            である．\par
+            $(A_1\cap B),(A_2\cap B)\in d(\mathcal{I})$であり，$d(\mathcal{I})$は$d{\rm \text{-}system}$であるので$\left((A_1\backslash A_2)\cap B\right)\in d(\mathcal{I})$となる．\par
+            よって$A_1\backslash A_2\in\mathcal{D}_2$．
+        \item \begin{equation}
+                A_n\in\mathcal{D}_2(n\in\mathbf{N})，A_n\uparrow A \left(A_n\subset A_{n+1}(n\in\mathbf{N}) かつ \bigcup_{n=1}^{\infty}A_n=A\right) \nonumber
+            \end{equation}
+            について考える．\par
+            $F_n=A_n\cap B$とおくと，$F_n=A_n\cap B\in d(\mathcal{I})$である．\par
+            また，$F_n=(A_n\cap B)\subset (A_{n+1}\cap B)=F_{n+1} (n\in\mathbf{N})$，\par
+            $\bigcup_{n=1}^{\infty}F_n=\bigcup_{n=1}^{\infty}(A_n\cap B)=\left(\bigcup_{n=1}^{\infty}A_n\right)\cap B=A\cap B$より$F_n\uparrow A\cap B$であり，\par
+            $A_n\in\mathcal{D}_2$から$F_n=A_n\cap B\in d(\mathcal{I}) (n\in\mathbf{N})$であったので$A\cap B\in d(\mathcal{I})$が成り立つ．
+            よって$A\in \mathcal{D}_2$．
+    \end{enumerate}        
+    以上より$\mathcal{D}_2$は$\mathcal{I}$を含む$d{\rm \text{-}system}$であることがいえ，$\mathcal{D}_2\supset d(\mathcal{I})$がわかり，逆も成り立つので$\mathcal{D}_2=d(\mathcal{I})$である．
+    
+    また，$\forall A\in d(\mathcal{I})(=\mathcal{D}_2)$に対して$\forall B\in d(\mathcal{I}),A\cap B\in \mathcal{D}_2=d(\mathcal{I})$が成り立つので$d(\mathcal{I})$は$\pi{\rm \text{-}system}$である．
+    
+    $d(\mathcal{I})$は$\pi{\rm \text{-}system}$かつ$d{\rm \text{-}system}$なので，$\mathcal{I}$を含む$\sigma$加法族である．$\sigma(\mathcal{I})$の最小性から
+    \begin{equation}
+        d(\mathcal{I})\supset\sigma(\mathcal{I}) \nonumber
+    \end{equation}
+    がいえ，$d(\mathcal{I})=\sigma(\mathcal{I})$が示せた．
+\end{proof}
+
+\subsubsection*{A1.4}
+補題1.6の証明
+\begin{itembox}[]{}
+ 1.6.(a)
+    $S$を集合とする．
+    $\mathcal{I}$が$S$の
+    有限交差の下で安定な$S$の部分集合の族$\pi{\rm\text{-}system}$とすると，
+    \begin{equation}
+        I_1,I_2\in\mathcal{I} \rightarrow I_1\cap I_2\in\mathcal{I} ． \nonumber
+    \end{equation}
+    
+    $\Sigma:=\sigma(\mathcal{I})$とする．
+    $\mu_1,\mu_2$が$(S,\Sigma)$上の測度であり，$\mu_1(S)=\mu_2(S)<\infty$かつ$\mathcal{I}上で\mu_1=\mu_2$を満たせば
+    \begin{equation}
+        \Sigma 上で \mu_1=\mu_2 \nonumber
+    \end{equation}
+    が成り立つ．
+\end{itembox}
+
+\begin{proof}
+    \begin{equation}
+        \mathcal{D} = \{F\in\Sigma:\mu_1(F)=\mu_2(F)\} \nonumber
+    \end{equation}
+    とする．
+    \begin{enumerate}
+        \item $\mu_1(S)=\mu_2(S)$より$S\in\mathcal{D}$．
+        \item $A,B\in\mathcal{D}(A\subset B)$に対して
+            $\mu_1(A)=\mu_2(A)<\infty$より
+            \begin{equation}
+                    \mu_1(B\backslash A)=\mu_1(B)-\mu_1(A)=\mu_2(B)-\mu_2(A)=\mu_2(B\backslash A) \nonumber
+            \end{equation}
+            より$(B\backslash A)\in\mathcal{D}$．
+        \item $F_n\in\mathcal{D}(n\in\mathbf{N}) , F_n\uparrow F$に対して，1.10(a)より
+            \begin{equation}
+                \mu_1(F)=\mu_1(\bigcup_n F_n)=\lim_{n\to\infty}\mu_1(F_n)=\lim_{n\to\infty}\mu_2(F_n)=\mu_2(\bigcup_n F_n)=\mu_2(F) \nonumber
+            \end{equation}
+            であるので，$F\in\mathcal{D}$．
+    \end{enumerate}
+    以上より$\mathcal{D}$は$d{\rm\text{-}system}$であることがわかる．
+    また，$\mu_1(S),\mu_2(S)$は$\mathcal{I}上で\mu_1=\mu_2$を満たすものであるので$\mathcal{I}\subset\mathcal{D}$である．
+    よって，A.1.2.より$\mathcal{D} \supset d(\mathcal{I}) = \sigma(\mathcal{I}) = \Sigma$から，$\Sigma 上で \mu_1=\mu_2$が成り立つ．
+    \begin{itembox}[]{}
+        \begin{align}
+            &\mathcal{I} 上で \mu_1=\mu_2 (\forall F\in\mathcal{I},\mu_1(F)=\mu_2(F)) \nonumber \\
+            \Rightarrow & \mathcal{D}\supset \mathcal{I} \nonumber \\
+            \Rightarrow & \mathcal{D}\supset d(\mathcal{I})=\Sigma \nonumber \\
+            \Rightarrow & \mathcal{D}\supset\Sigma より \forall F \in \Sigma,\mu_1(F)=\mu_2(F) \nonumber
+        \end{align}
+    \end{itembox}
+\end{proof}
+
+\subsubsection*{A1.5}
+$\mathcal{G}_0$を$S$の加法族とし，
+\begin{equation}
+    \lambda:\mathcal{G}_0\to[0,\infty] (\lambda(\emptyset)=0) \nonumber
+\end{equation}
+とする．
+$L\in\mathcal{G}_0$が
+\begin{equation}
+    \lambda(L\cap G)+\lambda(L^c\cap G)=\lambda(G),\forall G\in\mathcal{G}_0 \nonumber
+\end{equation}
+を満たす($\mathcal{G}_0$のすべての要素を適切に分割する)とき，$\lambda{\rm \text{-}set}$という．
+
+このとき，$\lambda{\rm \text{-}set}$の集合族$\mathcal{L}_0$は加法族であり，$\lambda$は有限加法的となる.
+
+また，互いに素な$L_1,L_2,\dots,L_n\in\mathcal{L}_0$と$G\in\mathcal{G}_0$に対して
+\begin{equation}
+    \lambda\left( \bigcup_{k=1}^n (L_k\cap G) \right) = \sum_{k=1}^n \lambda(L_k\cap G) \nonumber 
+\end{equation}
+が成り立つ.
+
+\begin{proof} \mbox{}\\
+Step 1:
+$L_1,L_2$を$\lambda{\rm \text{-}set}$とすると，$L=L_1\cap L_2$も$\lambda{\rm \text{-}set}$であることを示す．
+\begin{itembox}{}
+    \begin{align}
+    L^c\cap L_2 &= (L_1\cap L_2)^c\cap L_2 \nonumber \\
+    &=(L_1^c\cup L_2^c)\cap L_2 \nonumber \\
+    &=(L_1^c \cap L_2) \cup (L_2^c \cap L_2) \nonumber \\
+    &=L_1^c \cap L_2 \nonumber
+    \end{align}
+    \begin{align}
+        L^c\cap L_2^c &= (L_1\cap L_2)^c\cap L_2 \nonumber \\
+        &=(L_1^c\cup L_2^c)\cap L_2^c \nonumber \\
+        &=(L_1^c \cap L_2^c) \cup (L_2^c \cap L_2^c) \nonumber \\
+        &=L_2^c \nonumber
+    \end{align}
+\end{itembox}
+
+$L_1,L_2$は$\lambda{\rm \text{-}set}$であるので，よって$\forall G\in\mathcal{G}_0$に対して
+\begin{align}
+    \lambda(L^c\cap G) &= \lambda(L_2\cap (L^c\cap G)) + \lambda(L_2^c\cap (L^c\cap G)) \nonumber \\
+    &= \lambda((L_2\cap L^c)\cap G) + \lambda((L_2^c\cap L^c)\cap G) \nonumber \\
+    &= \lambda(L_2\cap L_1^c\cap G) + \lambda(L_2^c\cap G) \nonumber
+\end{align}
+\begin{align}
+    \lambda(L_2\cap G) &= \lambda(L_1\cap (L_2\cap G)) + \lambda(L_1^c\cap (L_2\cap G)) \nonumber \\
+    &= \lambda(L\cap G) + \lambda(L_1^c\cap L_2\cap G) \nonumber
+\end{align}
+である.
+\begin{align}
+    \lambda(G) &= \lambda(L_2\cap G) + \lambda(L_2^c\cap G) \nonumber \\
+    &= \lambda(L\cap G) + \lambda(L_1^c\cap L_2\cap G) + \lambda(L_2^c\cap G) \nonumber \\
+    &= \lambda(L\cap G) + \lambda(L^c\cap G) \nonumber \\
+\end{align}
+が成り立ち，$L$が$\lambda{\rm \text{-}set}$であることがわかる．
+
+Step 2:
+$\forall G\in\mathcal{G}_0$に対して
+\begin{align}
+    \lambda(S\cap G)+\lambda(S^c\cap G)&=\lambda(G)+\lambda(\emptyset\cap G) \nonumber \\
+    &=\lambda(G)+\lambda(\emptyset)=\lambda(G) \nonumber 
+\end{align}
+より$S$は$\lambda{\rm \text{-}set}$である．
+また，$\forall G\in\mathcal{G}_0$に対して
+\begin{align}
+    \lambda(L^c\cap G)+\lambda((L^c)^c\cap G)=\lambda(L^c\cap G)+\lambda(L\cap G) =\lambda(G) \nonumber  
+\end{align}
+より$L^c$は$\lambda{\rm \text{-}set}$である．
+
+以上より$(L_1\cup L_2)$もまた$\lambda{\rm \text{-}set}$である．
+
+したがって$\mathcal{L}_0$は加法族である．
+
+\begin{itembox}{}
+    $L_1,L_2$が$\lambda{\rm \text{-}set}$であれば
+    \begin{equation}
+        (L_1\cup L_2)=((L_1^c)^c\cup (L_2^c)^c)=((L_1^c) \cap (L_2^c))^c \nonumber
+    \end{equation}
+    であり，$L_1,L_2$は$\lambda{\rm \text{-}set}$であるので$((L_1^c) \cap (L_2^c))^c$も$\lambda{\rm \text{-}set}$である.
+\end{itembox}
+
+Step 3:
+$L_1,L_2$が互いに素であれば
+\begin{equation}
+    (L_1\cup L_2)\cap L_1=L_1,(L_1\cup L_2)\cap L_1^c=L_2 \nonumber
+\end{equation}
+であり，$L_1$は$\lambda{\rm \text{-}set}$であるので$\forall G\in\mathcal{G}_0$に対して
+\begin{align}
+    \lambda((L_1\cup L_2)\cap G)&=\lambda(L_1\cap ((L_1\cup L_2)\cap G))+\lambda(L_1^c\cap ((L_1\cup L_2)\cap G)) \nonumber \\
+    &=\lambda(L_1\cap G)+\lambda(L_2\cap G) ．
+\end{align}
+以上より主張が示せた．
+
+\begin{itembox}{}
+    \begin{equation}
+        \lambda(L_1\cup L_2)=\lambda((L_1\cup L_2)\cap \emptyset)=\lambda(L_1\cap \emptyset)+\lambda(L_2\cap \emptyset)=\lambda(L_1)+\lambda(L_2)　\nonumber
+    \end{equation}
+    から$\lambda$は有限加法的.
+\end{itembox}
+
+\begin{itembox}{}
+    互いに素な$L_1,L_2,\dots,L_n\in\mathcal{L}_0$と$G\in\mathcal{G}_0$に対して
+    \begin{equation}
+        \lambda\left( \bigcup_{k=1}^n (L_k\cap G) \right) = \sum_{k=1}^n \lambda(L_k\cap G) \nonumber 
+    \end{equation}
+    を示す．
+    (9)より$n=1$の場合は成り立つ．
+    $\lambda\left( \bigcup_{k=1}^m (L_k\cap G) \right) = \sum_{k=1}^m \lambda(L_k\cap G)$が成り立つとして，$m+1$の場合を考える．
+    $L_1,L_2,\dots,L_m,L_{m+1}\in\mathcal{L}_0$が互いに素であれば
+    
+    $\left( \bigcup_{k=1}^{m} L_k \cup L_{m+1} \right) \cap L_{m+1} = L_{m+1}$
+    
+    $\left( \bigcup_{k=1}^{m} L_k \cup L_{m+1} \right) \cap (L_{m+1})^c =  \bigcup_{k=1}^{m} L_k$であるので，
+    \begin{align}
+        &\forall G\in\mathcal{G}_0 \nonumber, \\ 
+        &\lambda\left( \bigcup_{k=1}^{m+1} (L_k\cap G) \right) = \lambda\left( \left(\bigcup_{k=1}^{m+1} L_k\right) \cap G \right) \nonumber \\
+        &= \lambda\left( \left(\bigcup_{k=1}^{m} L_k \cup L_{m+1} \right) \cap G \right) \nonumber \\
+        &= \lambda\left( \left(L_{m+1} \cap \left(\bigcup_{k=1}^{m} L_k \cup L_{m+1} \right) \right) \cap G \right) + \lambda\left( \left( (L_{m+1})^c \cap \left(\bigcup_{k=1}^{m} L_k \cup L_{m+1} \right) \right) \cap G \right) \nonumber \\
+        &= \lambda\left( L_{m+1} \cap G \right) + \lambda\left( \left( \bigcup_{k=1}^{m} L_k \right) \cap G \right) \nonumber \\
+        &= \lambda\left( L_{m+1} \cap G \right) + \lambda\left( \bigcup_{k=1}^{m} L_k \cap G\right) \nonumber \\
+        &= \lambda\left( L_{m+1} \cap G \right) + \sum_{k=1}^m \lambda(L_k\cap G) \nonumber \\
+        &= \sum_{k=1}^{m+1} \lambda(L_k\cap G) \nonumber
+    \end{align}
+\end{itembox}
+
+\end{proof}
+
+\subsubsection*{A1.6}
+外測度
+
+$\mathcal{G}$を$S$の$\sigma$加法族とする．
+関数
+\begin{equation}
+    \lambda\colon\mathcal{G}\to[0,\infty] \nonumber
+\end{equation}
+は
+\begin{description}
+    \item[(a)] $\lambda(\emptyset)=0$
+    \item[(b)] $\lambda$が単調増加 : $G_1,G_2\in\mathcal{G}$かつ$G_1\subseteq G_2$であれば
+        \begin{equation}
+            \lambda(G_1)\leq\lambda(G_2)
+        \end{equation}
+    \item[(c)] $\lambda$が可算準加法的 : 集合列$(G_k) (G_k\in\mathcal{G},k\in\mathbf{N})$に対して
+        \begin{equation}
+            \lambda \left( \bigcup_k G_k \right) \leq \sum_k \lambda(G_k)
+        \end{equation}
+\end{description}
+を満たすとき$(S,\mathcal{G})$の外測度という．
+
+\subsubsection*{A1.7}
+カラテオドリの補題
+
+$\lambda$を可測空間$(S,\mathcal{G})$の外測度とする．
+その場合，$\mathcal{G}$の$\lambda{\rm \text{-}set}$全体$\mathcal{L}$は$\sigma$加法族，$\lambda$は完全加法的な測度となり，$(S,\mathcal{L},\lambda)$は測度空間となる．
+
+\begin{proof}
+    A1.5より，$\mathcal{L}$の互いに素な集合列$(L_k)$に対して
+    \begin{align}
+        L\coloneqq \bigcup_k L_k\in\mathcal{L} ， \nonumber \\
+        \lambda(L)=\sum_k \lambda(L_k) \nonumber
+    \end{align}
+    を示せばよい．
+
+    外測度の準加法性より，$G\in\mathcal{G}$に対して
+    \begin{equation}
+        \lambda(G) \leq  \lambda(L\cap G)+\lambda(L^c\cap G) 
+    \end{equation}
+    が成り立つ．
+
+    $M_n\coloneqq \bigcup_{k\leq n}L_k$とすると，A1.5より$M_n\in\mathcal{L}$であるので，
+    \begin{equation}
+        \lambda(G)=\lambda(M_n\cap G)+\lambda(M_n^c\cap G) ． \nonumber
+    \end{equation}
+    $M_n^c\supseteq L^c$であるので，
+    \begin{equation}
+        \lambda(G)\geq\lambda(M_n\cap G)+\lambda(L^c\cap G) ． \nonumber
+    \end{equation}
+    またA1.5より
+    \begin{equation}
+        \lambda(G) \geq \sum_{k\leq n}\lambda(L_k\cap G)+\lambda(L^c\cap G) 
+    \end{equation}
+    となり，任意の$n\in\mathbf{N}$で(13)が成り立つので
+    \begin{align}
+        \lambda(G) &\geq \sum_{k}\lambda(L_k\cap G)+\lambda(L^c\cap G)  \\
+        &\geq \lambda(L\cap G)+\lambda(L^c\cap G)
+    \end{align}
+
+    (12),(15)より$\lambda(G)=\lambda(L\cap G)+\lambda(L^c\cap G)$が成り立つので$L\in\mathcal{L}$．
+    また，(14)式に$G=L$を代入することで$\lambda(L)=\sum_k \lambda(L_k)$であることがわかる． 
+\end{proof}
+
+\subsubsection*{A1.8}
+カラテオドリの拡張定理の証明
+
+\begin{itembox}[l]{カラテオドリの拡張定理}
+    $S$を集合，$\Sigma_0$をその加法族とし，
+    \begin{equation}
+        \Sigma\coloneqq\sigma(\Sigma_0) \nonumber
+    \end{equation}
+    とする．
+    $\mu_0:\Sigma_0\to[0,\infty]$が完全加法的であるとき以下のような$(S,\Sigma)$の測度$\mu$が存在する．
+    \begin{equation}
+        \Sigma_0 上で \mu=\mu_0 ． \nonumber
+    \end{equation}
+\end{itembox}
+
+\begin{proof} \mbox{}\\
+Step 1:
+$\mathcal{G}$を$S$の全ての部分集合族である$\sigma$加法族とする．
+$G\in\mathcal{G}$に対して$G\subset\bigcup_n F_n$となるような$\Sigma$の全ての集合列$(F_n)$を取り，
+\begin{equation}
+    \lambda(G) \coloneqq \inf\sum_n \mu_0(F_n)
+\end{equation}
+とする．
+
+$\lambda$が$(S,\mathcal{G})$の外測度であることを示す．
+\begin{enumerate}
+    \item $F_n=\emptyset(n\in\emptyset)$とすれば$\lambda(\emptyset)=0$である．
+    \item $G_1,G_2\in \mathcal{G},G_1\subseteq G_2$に対して$\lambda(G_1)\leq\lambda(G_2)$である．
+        \begin{itembox}{}
+            $\inf$の性質より，$\varepsilon>0,\sum\mu_0(F_n)\leq\lambda(G_2)+\varepsilon\ \bigr(G_2\subset\bigcup_nF_n\bigl)$が存在する．このような$\{F_n\}$の列を任意に一つとって固定し，$\{F_n'\}$とする．
+            
+            $G_1\subset G_2$から$G_1\subset\bigcup_nF_n'$であり，$\sum\mu_0(F_n')\in\{\sum\mu_0(F_n)|F_n\in\Sigma_0,G_1\subset\bigcup_nF_n\}$となるため，\par
+            $\inf$の性質より$\lambda(G_1)=\inf\{\sum\mu_0((F_n)|G_1\subset\bigcup_n F_n\} \leq \sum_0(F_n')$.
+
+            よって$\lambda(G_1)\leq\lambda(G_2)+\varepsilon$となり，$\varepsilon>0$は任意にとれるので$\varepsilon\downarrow 0$とすることで$\lambda(G_1)\leq\lambda(G_2)$がわかる．
+        \end{itembox}
+    \item $(G_n)$を$\mathcal{G}$の集合列とし，$\lambda(G_n)$を有限とする．
+        任意の$\varepsilon>0$ に対して 各$n\in\mathbf{N}$に
+        \begin{equation}
+            G_n\subseteq\bigcup_k F_{n,k},\sum_k \mu_0(F_{n,k})<\lambda(G_n)+\varepsilon 2^{-n}
+        \end{equation}
+        となるような$(F_{n,k})(F_{n,k}\in\Sigma_0:k\in\mathbf{N})$が存在する．
+        このとき，$G\coloneqq\bigcup_n G_n \subseteq \bigcup_n\bigcup_kF_{n,k}$であり，
+        \begin{equation}
+            \lambda(G) \leq \sum_n\sum_k\mu_0(F_{n,k}) < \sum_n\lambda(G_n) + \varepsilon \nonumber
+        \end{equation}
+        となる．$\varepsilon$は任意にとれるので$\lambda(G) \leq \sum_n\lambda(G_n)$である．
+\end{enumerate}
+以上より，$\lambda$が外測度であることが示せた．
+\\
+
+Step 2:
+A1.7より$\mathcal{L}$を$\mathcal{G}$の$\lambda{\rm \text{-}set}$全体とすると
+$(S,\mathcal{L})$に対して$\lambda$は測度であるので，
+
+\begin{equation}
+    \Sigma_0\subseteq\mathcal{L}, そして \Sigma_0 上で \lambda=\mu_0
+\end{equation}
+
+を示せばよい．($\Sigma\coloneqq\sigma(\Sigma_0)\subseteq\mathcal{L}$となり，$\mu$を$\lambda$の$(S,\Sigma)$への制限として定義できる．)
+\\
+
+Step 3: $\Sigma_0 上で \lambda=\mu_0$を示す．
+
+$F\in\Sigma_0$を考える．
+
+$\lambda(F)\leq\mu_0(F)$であることは明らか．
+\begin{itembox}{}
+    $\{G_n\}$を
+    \begin{equation}
+        G_n=\left\{
+        \begin{array}{ll}
+        F & n=1 \\
+        \emptyset & n\geq 2
+        \end{array}
+        \right. \nonumber
+    \end{equation}
+    とおくと，$\{G_n\}$は互いに素な集合列となり，
+    $\mu_0(F)=\mu_0(\bigcup_n G_n)=\sum_n\mu_0(G_n)$．
+    
+    ここで，$\sum_n\mu_0(G_n)\in\{\sum\mu_0(F_n)|F_n\in\Sigma_0,F\subset\bigcup_n F_n\}$であるので，
+    $\lambda(F) \leq \sum_n\mu_0(G_n)=\mu_0(F)$．
+\end{itembox}
+
+$F_n\in\Sigma_0$を$F\subseteq\bigcup_n F_n$とし，
+互いに素な集合列$(E_n)$を以下のように定める．
+\begin{equation}
+    E_1\coloneqq F_1 ,\ E_n=F_n\cap\left(\bigcup_{k<n}F_k\right)^c \nonumber
+\end{equation}
+このとき，$E_n\subseteq F_n$であり，$\bigcup E_n=\bigcup F_n\supseteq F$である．
+
+また，$\mu_0$の完全加法性より
+\begin{equation}
+    \mu_0(F)=\mu_0\left(\bigcup(F\cap E_n)\right)=\sum\mu_0(F\cap E_n) \nonumber
+\end{equation}
+となる．
+したがって，
+\begin{equation}
+    \mu_0(F) \leq \sum\mu_0(E_n) \leq \sum\mu_0(F_n)
+\end{equation}
+となる．
+よって$\lambda(F)\geq\mu_0(F)$となり，
+$\Sigma_0$上で$\lambda(F)=\mu_0(F)$であることが示せた．
+\\
+
+Step 4: $\Sigma_0 \subseteq \mathcal{L}$を示す．
+
+$E\in\Sigma_0,G\in\mathcal{G}$とおく．
+$\inf$の性質より，$G\subset\bigcup_n F_n$であり，
+\begin{equation}
+    \sum_n\mu_0(F_n) \leq \lambda(G)+\varepsilon \nonumber
+\end{equation}
+を満たす$(F_n)$が存在する．
+
+$E\cap G \subset \bigcup (E\cap F_n),E^c\cap G \subset \bigcup (E^c\cap F_n)$から$\lambda$の性質より
+\begin{align}
+    \sum_n\mu_0(F_n) = &\sum_n\mu_0(E\cap F_n)+\sum_n\mu_0(E^c\cap F_n) \nonumber \\
+    &\geq \lambda(E\cap G) + \lambda(E^c\cap G) \nonumber
+\end{align}
+$\varepsilon>0$は任意にとれるので，$\varepsilon\downarrow 0$とすることで$\lambda(G) \geq \lambda(E\cap G) + \lambda(E^c\cap G)$がわかる．
+
+また，外測度の準加法性より$\lambda(G) \leq \lambda(E\cap G) + \lambda(E^c\cap G)$であるので，
+$\lambda(G) = \lambda(E\cap G) + \lambda(E^c\cap G)$となり，$E$が$\lambda{\rm \text{-}set}$であることがわかる．
+
+よって，$\Sigma_0 \subset \Sigma \subset \mathcal{L}$となる．
+\end{proof}
+
+
+\subsubsection*{A1.9}
+$((0,1],\mathcal{B}(0,1])$上のルベーグ測度の存在の証明
+\begin{itembox}{}        
+    $\left( (0,1] , \mathcal{B}(0,1] \right)$上のルベーグ測度
+    
+    $S=(0,1]$とする．
+    $F\subseteq S$が
+    $r\in\mathbf{N},0\leq a_1\leq b_1\leq\dots\leq a_r\leq b_r\leq 1$で
+    \begin{equation}
+        F=(a_1,b_1]\cup\dots\cup(a_r,b_r] \nonumber
+    \end{equation}
+    である(有限結合である)場合，$F\in\Sigma_0$．
+    このとき$\Sigma_0$は$(0,1]$の加法族であり，
+    \begin{equation}
+        \Sigma:=\sigma(\Sigma_0)=\mathcal{B}(0,1] \nonumber
+    \end{equation}
+    (3)の$F$について，$\mu_0$を以下のように定義する
+    \begin{equation}
+        \mu_0(F)\coloneqq\sum_{k\leq r}(b_k-a_k) \nonumber
+    \end{equation}
+    である．
+    $\mu_0$は$((0,1],\mathcal{B}(0,1])$の測度である．
+\end{itembox}
+$F$は互いに素な集合の有限和集合として異なる表現を持つ可能性がある．例えば，
+\begin{equation}
+    (0,1] = \left(0,\frac{1}{2}\right] \cup \left(\frac{1}{2},1\right] \nonumber
+\end{equation}
+しかし，$\mu_0$が$\Sigma_0$上でwell-definedであり，有限加法的であることは明らかなので，$\Sigma_0$上で完全加法的であることを証明すればよい．
+
+
+\begin{itembox}{}
+    $\mu_0$が$\Sigma_0$上でwell-definedである？
+    
+    $(s,e]\in\Sigma_0$は以下のように2種類の有限結合で表せる．
+    \begin{equation}
+        (s,e]=(s,a_1]\cup(a_1,a_2]\cup\dots\cup(a_{r-1},a_r]\cup(a_r,e] (r\in\mathbf{N},s\leq a_1\leq a_2\leq\dots\leq  a_r\leq e) \nonumber
+    \end{equation}
+    \begin{equation}
+        (s,e]=(s,b_1]\cup(b_1,b_2]\cup\dots\cup(b_{l-1},b_l]\cup(b_l,e] (l\in\mathbf{N},s\leq b_1\leq b_2\leq\dots\leq  b_l\leq e) \nonumber
+    \end{equation}
+    しかし，
+    \begin{equation}
+        \mu_0\left( (s,a_1]\cup(a_1,a_2]\cup\dots\cup(a_{r-1},a_r]\cup(a_r,e] \right)=(a_1-s)+\sum_{k=1}^{r-1}(a_{k+1}-a_k) +(e-a_r)=e-s \nonumber
+    \end{equation}
+    であり，
+        \begin{equation}
+        \mu_0\left( (s,b_1]\cup(b_1,b_2]\cup\dots\cup(b_{r-1},b_r]\cup(b_l,e] \right)=(b_1-s)+\sum_{k=1}^{l-1}(a_{k+1}-a_k) +(e-b_l)=e-s \nonumber
+    \end{equation}
+    であるので，well-definedであることがわかる．
+\end{itembox}
+
+そこで、$(F_n)$が$\Sigma_0$で$\bigcup F_n= F\in\Sigma_0$となる互いに素な集合列とする．
+$G_n=\bigcup_{k=1}^n F_k$とすると，
+\begin{equation}
+    \mu_0(G_n) = \sum_{k=1}^n \mu_0(F_k) であり G_n\uparrow F ． \nonumber
+\end{equation}
+
+$\mu_0$が完全加法的であることを示すには$\mu_0(G_n)\uparrow\mu_0(F)$，つまり
+\begin{equation}
+    \mu_0(F)=\uparrow\lim\mu_0(G_n)=\uparrow\lim_{n}\sum_{k=1}^{n}\mu_0(F_k)=\sum\mu_0(F_k)
+\end{equation}
+を示せばよい．
+
+$H_n=F\backslash G_n$とすると，$H_n\in\Sigma_0かつH_n\downarrow\emptyset$となる．
+
+よって，$\mu_0(H_n) \downarrow 0$を示せば
+\begin{equation}
+    \mu_0(G_n) = \mu_0(F)-\mu_0(H_n) \uparrow \mu_0(F)
+\end{equation}
+であることがわかり，
+
+これを言い換えると
+
+\begin{description}
+    \item[\rm (a)]
+        $(H_n)$が$\Sigma_0$の単調減少列である場合，ある$\varepsilon>0$に対して，
+        \begin{equation}
+            \mu_0(H_n)\geq 2\varepsilon , \forall n \nonumber
+        \end{equation}
+        であれば，$\bigcap_k H_k \neq \emptyset$であることを示すことが必要となる．
+\end{description}
+
+\begin{itembox}{}
+    対偶をとると$\bigcap_k H_k = \emptyset$であれば
+    $\forall\varepsilon >0,\exists n\in\mathbb{N},\mu_0(H_n)<2\varepsilon$となる．
+    (収束の定義)
+\end{itembox}
+
+\begin{itembox}{}
+    \begin{proof}[\rm $H_n\downarrow\emptyset$の証明]{}
+        \begin{align}
+            H_k&=F\backslash G_k=\bigcup_n F_n\backslash\bigcup_{n=1}^k F_n \nonumber \\
+            &=\bigcup_{n=k+1}^{\infty} F_n \supset \bigcup_{n=k+2}^{\infty} F_n =\bigcup_n F_n\backslash\bigcup_{n=1}^{k+1} F_n =F\backslash G_{k+1} = H_{k+1} \nonumber
+        \end{align}
+        より$H_k\supset H_{k+1}$．
+        
+        また，$\lim_{n\to\infty} H_n =\lim_{n\to\infty} (F\backslash G_n) =F\backslash (\lim_{n\to\infty} G_n)=F\backslash F=\emptyset$．
+    \end{proof}
+\end{itembox}
+
+\begin{proof}[\rm (a)の証明]{}
+    $\Sigma_0$の定義より，各$k\in\mathbf{N}$に対して以下の性質が成り立つ$J_k\in\Sigma_0$が存在する．
+    \begin{equation}
+        \bar{J_k}\subseteq H_k(\bar{J_k} は J_k の閉包 )\ かつ，\ \mu_0(H_k\backslash J_k)\leq \varepsilon2^{-k} \nonumber
+    \end{equation}
+    \begin{itembox}{}
+        $H_k\in\Sigma_0$であるので
+        $r\in\mathbf{N},0\leq a_1\leq b_1\leq\dots\leq a_r\leq b_r\leq 1$で
+        \begin{equation}
+            H_k=(a_1,b_1]\cup\dots\cup(a_r,b_r] \nonumber
+        \end{equation}
+        のような有限結合の形で表せる．
+        
+        ここで，$\varepsilon'=\min_{n\in(1,2,\dots,r)} \{ \frac{b_n-a_n}{2},\frac{1}{r}\frac{\varepsilon}{2^k} \}$
+        とおいて，
+        \begin{equation}
+            J_k=(a_1+\varepsilon',b_1]\cup\dots\cup(a_r+\varepsilon',b_r] \nonumber
+        \end{equation}
+        とすると，$\bar{J_k}\subseteq H_k$であり，$\mu_0(H_k\backslash J_k)\leq \varepsilon2^{-k}$となる．
+    \end{itembox}
+    しかし，
+    \begin{equation}
+        \mu_0\left( H_n\backslash \bigcap_{k\leq n}J_k \right) \leq \mu_0\left( \bigcup_{k\leq n} (H_k\backslash J_k) \right) \leq \sum_{k\leq n} \mu_0(H_k\backslash J_k) \leq \sum_{k\leq n} \varepsilon2^{-k} < \varepsilon ． \nonumber
+    \end{equation}
+    よって，$\forall n, \mu_0(H_n)>2\varepsilon$であるので，任意の$n\in\mathbf{N}$で
+    \begin{equation}
+        \mu_0\left( \bigcap_{k\leq n}J_k \right) >\varepsilon \nonumber
+    \end{equation}
+    が成り立ち，$\bigcap_{k\leq n}J_k$は空でないことがわかる．
+    さらに，任意の$n\in\mathbf{N}$で
+    \begin{equation}
+        K_n \coloneqq \bigcap_{k\leq n}\bar{J_k} \nonumber
+    \end{equation}
+    もまた空でないことがわかる．
+
+    ここで，
+    \begin{equation}
+        \bigcap_{k}\bar{J_k} \neq \emptyset \nonumber
+    \end{equation}
+    が成り立たないとすると，$((\bar{J_k})^c:k\in\mathbf{N})$は$[0,1]$の開被覆になるが，$K_n$が空でないことから有限部分被覆を持たない．これはハイネ・ボレルの定理より，$[0,1]$がコンパクトであることに矛盾する．
+    
+    したがって，$\bigcap_{k}\bar{J_k} \neq \emptyset$であることがわかる．
+\end{proof}
+
+$\mu_0$は$\Sigma_0$上で完全加法的であり，$\mu_0((0,1])<\infty$であるので，
+$\mu_0$の一意な拡張として$(S,\Sigma)$の測度$\mu$が存在する．これは，$(S,\Sigma)$上のルベーグ測度である．
+
+$\mu_0{\rm \text{-}set}$は$\mathcal{B}(0,1]$を含む$\sigma$加法族を成す．
+つまり，$(0,1]$のルベーグ可測集合の$\sigma$加法族である。
+
+
+
+\subsubsection*{A1.10}
+非一意な拡張の例
+
+A1.9の$(S,\Sigma_0)$，$F\in\Sigma_0$に対して以下のように定める．
+
+\begin{equation}
+    \nu_0(F) \coloneqq \left\{
+    \begin{array}{ll}
+    0 & F=\emptyset の場合 \\
+    \infty & F\neq\emptyset の場合
+    \end{array}
+    \right. \nonumber
+\end{equation}
+
+$\nu_0$の拡張は(a)の$\Sigma$への拡張として考えられる．
+しかし，以下のようなまた別な拡張も存在する．
+\begin{align}
+    &\tilde{\nu}(F) = F の要素の個数 \nonumber \\
+    =&\left\{
+    \begin{array}{ll}
+    0 & \aleph_0={\rm card}(F) の場合 \\
+    \infty & \aleph_0<{\rm card}(F) の場合
+    \end{array}
+    \right. \nonumber
+\end{align}
+
+
+
+
+\subsubsection*{A1.11}
+測度空間の完備化
+
+完備な測度空間とは，零集合の任意の部分集合が可測，従って零集合になる測度空間である．
+
+\begin{itembox}{}
+    測度空間 $(X,\mathcal{F},\mu)$ が完備(complete) であるとは，$N\in\mathcal{F}$ が $\mu(N)=0$ をみたすとき，$N$ の任意の部分集合が $\mathcal{F}$ に属することをいう．
+\end{itembox}
+
+
+$(S,\Sigma,\mu)$を測度空間とする．また，$S$の集合族$\mathcal{N}$を次のように定義する．
+
+\begin{equation}
+    N\in\mathcal{N} \ {\rm if\ and\ only\ if} \ \exists Z\in\Sigma(N\subseteq Z かつ \mu(Z)=0) ．\nonumber
+\end{equation}
+また，$S$の部分集合$F$に対して
+\begin{equation}
+    \exists E,G\in\Sigma , E\subseteq F\subseteq G かつ\mu(G\backslash E)=0 \Rightarrow F\in\Sigma^* ．\nonumber
+\end{equation}
+とする．
+
+また，$\mu^*$を以下のように定める．
+\begin{equation}
+    \mu^*(F)=\mu(E)=\mu(G) \nonumber
+\end{equation}
+
+このとき，$\Sigma^*=\sigma(\Sigma,\mathcal{N})$であり，$(S,\Sigma^*,\mu^*)$は完備な測度空間となる．
+
+\begin{proof}[$\Sigma^*$が$\sigma$加法族であることの証明]\mbox{}
+    \begin{enumerate}
+        \item $S\in\Sigma, S\subseteq S\subseteq S$ かつ $\mu(S\backslash S)=0$であるので$S\in\Sigma^*$．
+        \item $F\in\Sigma^*$のとき，$\exists E,G\in\Sigma , E\subseteq F\subseteq G かつ\mu(G\backslash E)=0$である．
+            ここで，$S\backslash E,S\backslash G\in\Sigma , S\backslash E \subseteq S\backslash F \subseteq S\backslash G$であり，$\mu((S\backslash E)\backslash(S\backslash G))=\mu(G\backslash E)=0$であるので$S\backslash F \in \Sigma^*$．
+        \item $F_n\in\Sigma^*(n\in\mathbf{N})$のとき，$\exists E_n,G_n\in\Sigma , E_n\subseteq F_n\subseteq G_n かつ\mu(G_n\backslash E_n)=0$である．
+        
+            仮定より$\bigcup_n E_n,\bigcup_n G_n \in \Sigma$かつ$\bigcup_n E_n \subseteq \bigcup_n F_n \subseteq \bigcup_n G_n$である．
+            ここで，
+            \begin{align}
+                &\mu \left( \bigcup_n G_n \backslash \bigcup_n E_n \right) \nonumber \\
+                =&\mu \left( \bigcup_n G_n \cap \left(\bigcup_n E_n\right)^c \right) = \mu \left( \bigcup_n G_n \cap \bigcap_n E_n^c \right) =\mu \left( \bigcup_n \left( G_n \cap \bigcap_n E_n^c \right) \right) \nonumber \\
+                \leq&\mu \left( \bigcup_n \left( G_n \cap E_n^c \right) \right) \nonumber \\
+                \leq&\sum_n \mu(G_n \cap E_n^c) = \sum_n \mu(G_n \backslash E_n) = \sum_n 0 = 0 \nonumber
+            \end{align}
+            であるので$\bigcup_n F_n \in \Sigma^*$．
+    \end{enumerate}
+\end{proof}
+
+
+\begin{proof}[$\Sigma^*=\sigma(\Sigma,\mathcal{N})$であることの証明]\mbox{}
+    \begin{description}
+        \item[($\supset$)]\mbox{}\\
+            $\forall F\in \Sigma$に対して，$F\subseteq F\subseteq F,\mu(F\backslash F)=0$より$F\in\Sigma^*$．
+            
+            $\forall N\in\mathcal{N}$に対して$\emptyset\in\Sigma,\exists Z\in\Sigma,\emptyset\subseteq N\subseteq Z,\mu(Z\backslash\emptyset)=\mu(Z)=0$より$N\in\Sigma^*$．
+            
+            よって$\Sigma^*\supset\Sigma, \Sigma^*\supset\mathcal{N}$であり，$\Sigma^*$は$\sigma$加法族であるので$\Sigma^*\supset \sigma(\Sigma,\mathcal{N})$．
+        \item[($\subset$)]\mbox{}\\
+            $\forall F\in \Sigma^*$に対して，$\exists E,G\in\Sigma, E\subseteq F\subseteq G,\mu(G\backslash E)=0$．
+            
+            また，\begin{equation}
+                F=(F\backslash E)\cup E ． \nonumber
+            \end{equation}
+            
+            仮定より$E\in\Sigma$であり，$F\backslash E \subset G\backslash E,\mu(G\backslash E)$から$(F\backslash E)\in\mathcal{N}$である．
+            
+            $\sigma$加法族の性質より$F\in\sigma(\Sigma,\mathcal{N})$であるので$\Sigma^*\subset \sigma(\Sigma,\mathcal{N})$．
+    \end{description}
+\end{proof}
+
+\begin{proof}[$\mu^*$が測度であることの証明]\mbox{}\\
+
+    $F_n\in\Sigma^*(n\in\mathbf{N})$に対して，$\exists E_n,G_n\in\Sigma , E_n\subseteq F_n\subseteq G_n かつ\mu(G_n\backslash E_n)=0$である．
+        
+    $\Sigma^*$は$\sigma$加法族であるので
+    \begin{equation}
+        \bigcup_n E_n,\bigcup_n G_n \in \Sigma ,\  \bigcup_n E_n \subseteq \bigcup_n F_n \subseteq \bigcup_n G_n ,\  \mu \left( \bigcup_n G_n \backslash \bigcup_n E_n \right)=0 \nonumber
+    \end{equation}である．
+
+    また，$F_n$が互いに素であるから$E_n$も互いに素であるので，
+
+    \begin{align}
+        &\mu^*\left( \bigcup_n F_n \right) \nonumber \\
+        =&\mu\left( \bigcup_n E_n \right) = \sum_n \mu(E_n) \nonumber \\
+        =&\sum_n \mu^*\left( F_n \right) \nonumber
+    \end{align}
+    
+    よって，$\mu^*$は$(S,\Sigma^*)$の測度である．
+\end{proof}
+
+
+
+
+\end{document}
