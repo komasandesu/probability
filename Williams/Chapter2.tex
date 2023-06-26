@@ -1,0 +1,284 @@
+\documentclass{jsarticle}
+\usepackage[utf8]{inputenc}
+
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{bm}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{enumitem}
+\usepackage{mathrsfs}
+\usepackage{mathtools}
+\usepackage{latexsym}
+\usepackage{ascmac}
+
+\renewcommand{\proofname}{\textbf{\rm 証明}}
+
+
+\title{Williams Chapter 2}
+\author{koma}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\subsubsection*{2.1}
+実験用モデル$(\Omega,\mathcal{F},\mathbf{P})$
+
+ランダム性を伴う実験のモデルは，セクション1.5の確率空間$(\Omega,\mathcal{F},\mathbf{P})$の形式を取る．
+
+\begin{description}
+    \item[\bf 標本空間] 
+        $\Omega$は標本空間と呼ばれる．
+    \item[\bf 標本点] 
+        $\Omega$の$\omega$は標本点と呼ばれる．
+    \item[\bf 事象] 
+        $\Omega$上の$\sigma$加法族$\mathcal{F}$は事象族と呼ばれ，$\Omega$の$\mathcal{F}$可測集合である$\mathcal{F}$の要素は事象となります．
+\end{description}
+
+確率空間の定義により$\mathbf{P}$は$(\Omega,\mathcal{F})$の確率測度です。
+
+\subsubsection*{2.2}
+直感的な意味
+
+チャンスの女神テュケは，法則$\mathbf{P}$に従って$\Omega$の点$\omega$を「ランダムに」選択する．
+つまり，$\mathcal{F}$の$F$について，$\mathbf{P}(F)$は(私たちの直観によって理解される意味で) 「確率」を表す．
+テュケが選んだ点$\omega$は$F$に属する．
+
+選択した点$\omega$によって実験の結果が決まるので，以下のような写像が存在する．
+\begin{align}
+    &\Omega \rightarrow 結果の集合 ， \nonumber \\
+    &\omega \rightarrow 結果\nonumber
+\end{align}
+
+この「写像」は必ずしも1対1対応である必要がある理由はない．実験には明らかな「最小」または「標準」モデルがあるにもかかわらず、より豊富なモデルを使用する方が良い場合がよくある．
+
+たとえば，ランダムウォークをブラウン運動に埋め込むことで，コイン投げの多くの特性を読み取ることができる．
+
+\subsubsection*{2.3}
+$(\Omega,\mathcal{F})$の例
+\begin{description}
+    \item[(a)] 実験:コインを二回投げる．すると
+        \begin{equation}
+            \Omega=\{HH,HT,TH,TT\} , \mathcal{F}=\mathcal{P}(\Omega)\coloneqq \Omega の全てのすべての部分集合の集合族． \nonumber
+        \end{equation}
+        このモデルでは，「少なくとも1回の結果が表になる」という直感的な事象は，数学的な事象 ($\mathcal{F}$ の要素) $\{HH,HT,TH\}$ によって記述される．
+    \item[(b)] 実験:コインを無限に投げる．すると
+        \begin{equation}
+            \Omega=\{H,T\}^{\mathbf{N}} \nonumber
+        \end{equation}
+        であるので$\Omega$の$\omega$は以下のように書くことができる．
+        \begin{equation}
+            \omega = (\omega_1,\omega_2,\dots) , \omega_n \in \{H,T\}． \nonumber
+        \end{equation}
+
+        ここで，直感的な事象$\omega_n=W’,W\in\{H,T\}$について
+        \begin{equation}
+            \mathcal{F} = \sigma(\{\omega\in\Omega \colon n\in\mathbf{N},W\in\{H,T\}) \nonumber
+        \end{equation}
+        のように自然に決めることができる．
+
+        $\mathcal{F}\neq\mathcal{P}(\Omega)$だが，$\mathcal{F}$は十分に大きいことがわかる．
+        例えば，3.7節では
+        \begin{equation}
+            \frac{ n回のトスでの表の数 }{n} \to \frac{1}{2}
+        \end{equation}
+        という文の真理集合
+        \begin{equation}
+            F=\left\{ \omega\colon \frac{\#(k\leq n\colon\omega_k=H)}{n} \to \frac{1}{2} \right\} \nonumber
+        \end{equation}
+        が$\mathcal{F}$の要素となることがわかる．
+
+        なお，(a)の実験では，サンプル点と結果の写像$\omega\mapsto(\omega_1,\omega_2)$を用いて，モデルをより情報量の多いモデルとして使うことができる．
+
+        \item[(c)]実験:0と1の間の点を一様に無作為に選ぶ．
+        選択された点を表す$\Omega=[0,1],\mathcal{F}=\mathcal{B}[0,1],\omega$を考える．この場合，明らかに$\mathbf{P}={\rm Leb}$となる．
+        このモデルが公正なコインのモデル(b)を含む意味の説明については，後とする．
+\end{description}
+
+\subsubsection*{2.4}
+Almost surely(a.s.)
+
+結果に関する状態$S$は次の場合，ほとんど確実に(a.s.)，または確率1(w.p.1)で真であると言われる．
+\begin{equation}
+    F \coloneqq \{\omega \colon S(\omega)は真\}\in\mathcal{F} かつ \mathbf{P}(F)=1 ．
+\end{equation}
+
+(a)命題 $F_n\in\mathcal{F}(n\in\mathbf{N})$かつ$\forall n,\mathbf{P}(F_n)=1$であれば$\mathbf{P}(\bigcap_n F_n)=1$である．
+
+\begin{proof}
+    $\forall n,\mathbf{P}(F_n^c)=0$であるので1.10(c)より
+    $\mathbf{P}(\bigcup_n F_n^c)=0$となる.
+
+    ここで，$\bigcap_n F_n=(\bigcup_n F_n^c)^c$より
+    $\mathbf{P}(\bigcap_n F_n)=1$である.
+\end{proof}
+
+\begin{itembox}{$\rm \mu \text{-} null\ set$との違い}
+    \begin{description}
+        \item[$\rm almost\ surely$ :] 命題が真であること ((a):可算個のa.s.$\Rightarrow$ a.s.)
+        \item[$\rm \mu \text{-} null\ set$ :] 命題が偽であること (真であることについて考えると測度が$\infty$になる場合があるため)
+    \end{description}
+\end{itembox}
+
+\subsubsection*{2.5}
+注意 :  $\limsup, \liminf, \downarrow\lim$等
+
+\begin{description}
+    \item[(a)] $(x_n : n\in\mathbf{N})$を実数列とする．
+        \begin{equation}
+            \limsup x_n \coloneqq \inf_m\left\{ \sup_{n\geq m}x_n \right\} = \downarrow\lim_m\left\{ \sup_{n\geq m}x_n \right\} \in [-\infty,\infty]
+        \end{equation}
+        のように定義する．
+        $y_m\coloneqq \sup_{n\geq m}x_n$は広義単調減少であるので，$y_m$の極限は$[-\infty,\infty]$に必ず存在する．
+
+        \begin{itembox}{}
+            $y_m \coloneqq \sup\{x_n:n\geq m\}$であり，
+            $\{x_n:n\geq m\} \supset \{x_n:n\geq m+1\}$より広義単調減少
+        \end{itembox}
+        
+        単調な極限を意味する$\uparrow\lim$や$\downarrow\lim$は便利で，$y_{\infty}＝\downarrow\lim y_n$を意味する$y_n \downarrow\ y_{\infty}$の使用も便利である．
+    \item[(b)] 同様にして
+        \begin{equation}
+            \liminf x_n \coloneqq \sup_m\left\{ \inf_{n\geq m}x_n \right\} = \uparrow\lim_m\left\{ \inf_{n\geq m}x_n \right\} \in [-\infty,\infty]
+        \end{equation}
+    \item[(c)] 
+        $x_n$が$[-\infty,\infty]$に収束する $\Longleftrightarrow$ $\limsup x_n=\liminf x_n$
+        このとき，$\lim x_n=\limsup x_n=\liminf x_n$
+    \item[(d)] \mbox{}
+        \begin{description}
+            \item[(i)] $z > \limsup x_n$の場合，
+                最終的に(つまり，十分に大きいすべての$n$について)$x_n<z$となる．
+                \begin{itembox}{}
+                    \begin{equation}
+                        z>\limsup x_n=\lim_{m\to\infty}\sup_{n\geq m}x_n \Longleftrightarrow \exists m\in\mathbf{N} s.t.\forall n\in\mathbf{N},n\geq m, z>x_n \nonumber
+                    \end{equation}
+                \end{itembox}
+            \item[(ii)] $z < \limsup x_n$の場合，
+                無限回(つまり，無限に多くの$n$について)$x_n>z$となる．
+                \begin{itembox}{}
+                    \begin{equation}
+                        z<\limsup x_n=\lim_{m\to\infty}\sup_{n\geq m}x_n \Longleftrightarrow \forall m\in\mathbf{N} s.t.\exists n\in\mathbf{N},n\geq m, x_n>z \nonumber
+                    \end{equation}
+                \end{itembox}
+        \end{description}
+\end{description}
+
+\subsubsection*{2.6}
+定義 $\limsup E_n,(E_n,{\rm i.o.})$
+
+事象(真理集合)「表が出た回数/投げた回数 $\to \frac{1}{2}$」は，「$n$回目の試行で表が出る」といった単純な事象から、かなり複雑な方法で構築されます。」
+
+集合の$\liminf$と$\limsup$を取るという考え方により示す．
+
+$E$がである場合、次のトートロジーに注意すると役立つかもしれない．
+\begin{equation}
+    E=\{ \omega : \omega \in E \} \nonumber
+\end{equation}
+
+ここで$(E_n \colon n\in N)$が事象列であると仮定する．
+
+\begin{description}
+    \item[(a)]以下のように定義する．
+        \begin{align}
+            (E_n,{\rm i.o.}) &\coloneqq (E_nが無限回起こる) \nonumber \\
+            &\coloneqq \limsup E_n \coloneqq \bigcap_m\bigcup_{n\geq m}E_n \nonumber \\
+            &=\{\omega \colon 任意の m\in\mathbf{N} について, \exists n(\omega)\geq m( ただし, \omega\in E_{n(\omega)} である ) \} \nonumber \\
+            &=\{\omega \colon 無限に多くの n について \omega \in E_n \} \nonumber
+        \end{align}
+        \begin{itembox}{}
+            $\limsup E_n \coloneqq \bigcap_{m\in\mathbf{N}}\bigcup_{n\geq m}E_n$ の意味
+            \begin{align}
+                &\omega \in \bigcap_{m\in\mathbf{N}}\bigcup_{n\geq m}E_n \nonumber \\
+                \Leftrightarrow &\forall m\in\mathbf{N} , \omega\in \bigcup_{n\geq m}E_n \nonumber \\
+                \Leftrightarrow &\forall m\in\mathbf{N} , \exists n\geq m , \omega\in E_n \nonumber
+            \end{align}
+            つまり，$m\in\mathbf{N}$がどんなに大きくても$\exists n\in\mathbf{} {\rm s.t.}n\geq m,\omega\in E_n$
+        \end{itembox}
+    \item[(b)] 逆Fatouの補題($\mathbf{P}$の有限性が必要)
+        \begin{equation}
+            \mathbf{P}(\limsup E_n) \geq \limsup\mathbf{P}(E_n) ． \nonumber
+        \end{equation}
+        \begin{proof}
+            $G_m\coloneqq\bigcup_{n\geq m}E_n$とする．
+            このとき，$G_m\downarrow G (G\coloneqq\limsup E_n)$である．よって1.10(b)より，$\mathbf{P}(G_m)\downarrow\mathbf{P}(G)$となる．
+            
+            ここで，明らかに
+            \begin{equation}
+                \mathbf{P}(G_m) \geq \sup_{n\geq m}\mathbf{P}(E_n) ． \nonumber
+            \end{equation}
+            したがって，
+            \begin{equation}
+                \mathbf{P}(G) \geq \downarrow\lim_m\left\{ \sup_{n\geq m}\mathbf{P}(E_n) \right\} \eqqcolon \limsup\mathbf{P}(E_n) ． \nonumber 
+            \end{equation}
+
+            \begin{itembox}{}
+                \begin{equation}
+                    \forall\varepsilon>0 , \mathbf{P}(G_m)>\sup_{n\geq m}\mathbf{P}(E_n)-\varepsilon \nonumber
+                \end{equation}
+                が成り立つので，$\varepsilon\downarrow 0$を考えると
+                \begin{equation}
+                    \mathbf{P}(G_m)>\sup_{n\geq m}\mathbf{P}(E_n) \nonumber
+                \end{equation}
+                が成立する．
+            \end{itembox}
+        \end{proof}
+\end{description}
+
+\subsubsection*{2.7}
+Borel–Cantelliの補題
+
+$(E_n \colon n\in\mathbf{N})$を$\sum_n\mathbf{P}(E_n)<\infty$であるような事象列とする．
+このとき，以下が成り立つ．
+\begin{equation}
+    \mathbf{P}(\limsup E_n) = \mathbf{P}(E_n,{\rm i.o.}) = 0 ． \nonumber
+\end{equation}
+
+\begin{proof}
+    2.6(b)のように$G_m,G$を表すとする．
+    1.9(b),1.10(a)より，各$m\in\mathbf{N}$において
+    \begin{equation}
+        \mathbf{P}(G) \leq \mathbf{P}(G_m) \leq \sum_{n\geq m}\mathbf{P}(E_n) \nonumber
+    \end{equation}
+    が成り立つ．
+    ここで$m\uparrow\infty$とすれば示すことができる．
+    \begin{itembox}{}
+        \begin{equation}
+            z>\limsup x_n=\lim_{m\to\infty}\sup_{n\geq m}x_n \Longleftrightarrow \exists m\in\mathbf{N} s.t.\forall n\in\mathbf{N},n\geq m, z>x_n \nonumber
+        \end{equation}
+    \end{itembox}
+\end{proof}
+
+\subsubsection*{2.8}
+定義 $\liminf E_n,(E_n,{\rm ev})$
+
+もう一度$(E_n \colon n\in N)$が事象列であるとする．
+\begin{description}
+    \item[(a)]以下のように定義する．
+        \begin{align}
+            (E_n,{\rm ev}) &\coloneqq (E_nが最終的に起こる) \nonumber \\
+            &\coloneqq \liminf E_n \coloneqq \bigcup_m\bigcap_{n\geq m}E_n \nonumber \\
+            &=\{\omega \colon ある m\in\mathbf{N} について, \forall n\geq m(\omega) , \omega\in E_{n} が成り立つ \} \nonumber \\
+            &=\{\omega \colon すべての大きな n に対して \omega \in E_n \} \nonumber
+        \end{align}
+    \item[(b)] $(E_n,{\rm ev})^c = (E_n^c,{\rm i.o.})$である．
+    \item[(c)] Fatouの補題(任意の測度空間で成り立つ)
+        \begin{equation}
+            \mathbf{P}(\liminf E_n) \leq \liminf\mathbf{P}(E_n) ． \nonumber
+        \end{equation}
+        \begin{proof}
+            $G_m\coloneqq\bigcap_{n\geq m}E_n$とする．
+            このとき，$G_m\uparrow G (G\coloneqq\liminf E_n)$である．よって1.10(b)より，$\mathbf{P}(G_m)\uparrow\mathbf{P}(G)$となる．
+            
+            ここで，明らかに
+            \begin{equation}
+                \mathbf{P}(G_m) \leq \inf_{n\geq m}\mathbf{P}(E_n) ． \nonumber
+            \end{equation}
+            したがって，
+            \begin{equation}
+                \mathbf{P}(G) \leq \uparrow\lim_m\left\{ \inf_{n\geq m}\mathbf{P}(E_n) \right\} \eqqcolon \liminf\mathbf{P}(E_n) ． \nonumber 
+            \end{equation}
+        \end{proof}
+\end{description}
+
+
+
+\end{document}
